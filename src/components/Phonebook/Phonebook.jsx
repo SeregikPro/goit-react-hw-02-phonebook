@@ -1,9 +1,10 @@
 import { Component } from 'react';
+import { Box } from 'components/Box';
 
 class Phonebook extends Component {
   render() {
     return (
-      <div className="Phonebook">
+      <Box>
         <input
           type="text"
           name="name"
@@ -11,13 +12,8 @@ class Phonebook extends Component {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        <div className="Contacts">
-          <h2>Contacts</h2>
-          <ul>
-            <li></li>
-          </ul>
-        </div>
-      </div>
+        <div className="Contacts"></div>
+      </Box>
     );
   }
 }
