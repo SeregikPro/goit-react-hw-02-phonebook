@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-// import { nanoid } from 'nanoid';
-// import Phonebook from './Phonebook';
+import { nanoid } from 'nanoid';
 import { Box } from './Box';
 import ContactList from './ContactList';
-import Button from './Button';
 import ContactForm from './ContactForm';
 import Filter from './Filter';
 
@@ -18,10 +16,24 @@ class App extends Component {
     filter: '',
   };
 
-  deleteContact = id => {
+  handleContactSubmit = contact => {
+    this.addContact(contact);
+  };
+
+  addContact = ({ name, number }) => {
+    const newContact = {
+      id: nanoid(),
+      name,
+      number,
+    };
+
     this.setState(({ contacts }) => {
-      return { contacts: contacts.filter(contact => contact.id !== id) };
+      return { contacts: [...contacts, newContact] };
     });
+  };
+
+  handleFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
   };
 
   filterContacts = () => {
@@ -31,6 +43,22 @@ class App extends Component {
     return contacts.filter(({ name }) =>
       name.toLocaleLowerCase().includes(normalizedFilter)
     );
+  };
+
+  checkDuplicates = name => {
+    const { contacts } = this.state;
+    const allContactNames = contacts.map(contact => contact.name);
+
+    if (allContactNames.includes(name)) {
+      alert(`${name} is already in contacts.`);
+      return true;
+    }
+  };
+
+  deleteContact = id => {
+    this.setState(({ contacts }) => {
+      return { contacts: contacts.filter(contact => contact.id !== id) };
+    });
   };
 
   render() {
@@ -47,8 +75,10 @@ class App extends Component {
           borderRadius="normal"
           p={4}
         >
-          <ContactForm />
-          <Button type="submit">Add contact</Button>
+          <ContactForm
+            onSubmit={this.handleContactSubmit}
+            checkDuplicates={this.checkDuplicates}
+          />
         </Box>
         <Box>
           <h2>Contacts</h2>

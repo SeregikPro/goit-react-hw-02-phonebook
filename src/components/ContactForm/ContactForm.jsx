@@ -2,6 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Box } from 'components/Box';
 import { Input, Title } from './ContactForm.styled';
+import Button from 'components/Button';
 
 class ContactForm extends Component {
   state = {
@@ -64,6 +65,8 @@ class ContactForm extends Component {
             required
           />
         </Box>
+
+        <Button type="submit">Add contact</Button>
       </Box>
     );
   }
