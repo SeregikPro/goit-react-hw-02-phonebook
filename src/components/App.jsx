@@ -16,11 +16,7 @@ class App extends Component {
     filter: '',
   };
 
-  handleContactSubmit = contact => {
-    this.addContact(contact);
-  };
-
-  addContact = ({ name, number }) => {
+  handleContactSubmit = ({ name, number }) => {
     const newContact = {
       id: nanoid(),
       name,
@@ -32,10 +28,6 @@ class App extends Component {
     });
   };
 
-  handleFilter = e => {
-    this.setState({ filter: e.currentTarget.value });
-  };
-
   filterContacts = () => {
     const { contacts, filter } = this.state;
 
@@ -43,6 +35,10 @@ class App extends Component {
     return contacts.filter(({ name }) =>
       name.toLocaleLowerCase().includes(normalizedFilter)
     );
+  };
+
+  handleFilter = e => {
+    this.setState({ filter: e.target.value.toLowerCase() });
   };
 
   checkDuplicates = name => {
@@ -62,8 +58,6 @@ class App extends Component {
   };
 
   render() {
-    const filteredContacts = this.filterContacts();
-
     return (
       <Box display="flex" flexDirection="column" alignItems="center" p={5}>
         <h1>Phonebook</h1>
@@ -82,9 +76,9 @@ class App extends Component {
         </Box>
         <Box width="300px">
           <h2>Contacts</h2>
-          <Filter />
+          <Filter onChange={this.handleFilter} />
           <ContactList
-            values={filteredContacts}
+            values={this.filterContacts()}
             handleDelete={this.deleteContact}
           />
         </Box>

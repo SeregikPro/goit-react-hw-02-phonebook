@@ -4,11 +4,13 @@ import { Box } from 'components/Box';
 import { Input, Title } from './ContactForm.styled';
 import Button from 'components/Button';
 
+const INITIAL_STATE = {
+  name: '',
+  number: '',
+};
+
 class ContactForm extends Component {
-  state = {
-    name: '',
-    number: '',
-  };
+  state = { ...INITIAL_STATE };
 
   static propTypes = {
     onSubmit: PropTypes.func.isRequired,
@@ -35,7 +37,7 @@ class ContactForm extends Component {
   };
 
   reset = () => {
-    this.setState({ ...this.state });
+    this.setState({ ...INITIAL_STATE });
   };
 
   render() {
