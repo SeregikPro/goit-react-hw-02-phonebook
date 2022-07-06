@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Box } from 'components/Box';
-import ContactItem from './ContactItem';
+import ContactItem from 'components/ContactItem';
 
 const ContactList = ({ values, handleDelete }) => {
   return (
