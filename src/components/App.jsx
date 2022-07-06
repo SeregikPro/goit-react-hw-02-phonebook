@@ -1,10 +1,11 @@
-import React from 'react';
-import { Component } from 'react';
-import Phonebook from './Phonebook';
+import React, { Component } from 'react';
+// import { nanoid } from 'nanoid';
+// import Phonebook from './Phonebook';
 import { Box } from './Box';
-import Section from './Section';
 import ContactList from './ContactList';
 import Button from './Button';
+import ContactForm from './ContactForm';
+import Filter from './Filter';
 
 class App extends Component {
   state = {
@@ -36,17 +37,27 @@ class App extends Component {
     const filteredContacts = this.filterContacts();
 
     return (
-      <Box display="flex" flexDirection="column" p={5}>
-        <Section title="Phonebook">
-          <Phonebook />
+      <Box display="flex" flexDirection="column" alignItems="center" p={5}>
+        <h1>Phonebook</h1>
+        <Box
+          width="400px"
+          textAlign="center"
+          border="normal"
+          borderColor="accent"
+          borderRadius="normal"
+          p={4}
+        >
+          <ContactForm />
           <Button type="submit">Add contact</Button>
-        </Section>
-        <Section title="Contacts">
+        </Box>
+        <Box>
+          <h2>Contacts</h2>
+          <Filter />
           <ContactList
             values={filteredContacts}
             handleDelete={this.deleteContact}
           />
-        </Section>
+        </Box>
       </Box>
     );
   }
