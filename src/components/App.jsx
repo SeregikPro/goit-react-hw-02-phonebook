@@ -68,7 +68,7 @@ class App extends Component {
       <Box display="flex" flexDirection="column" alignItems="center" p={5}>
         <h1>Phonebook</h1>
         <Box
-          width="400px"
+          width="300px"
           textAlign="center"
           border="normal"
           borderColor="accent"
@@ -80,7 +80,7 @@ class App extends Component {
             checkDuplicates={this.checkDuplicates}
           />
         </Box>
-        <Box>
+        <Box width="300px">
           <h2>Contacts</h2>
           <Filter />
           <ContactList

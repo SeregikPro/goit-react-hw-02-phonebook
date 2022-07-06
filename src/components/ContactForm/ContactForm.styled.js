@@ -11,6 +11,7 @@ export const Input = styled.input`
   font-size: ${p => p.theme.fontSizes.s};
   border: 1px solid ${p => p.theme.colors.muted};
   border-radius: ${p => p.theme.radii.normal};
+  width: 200px;
 
   :hover,
   :focus {

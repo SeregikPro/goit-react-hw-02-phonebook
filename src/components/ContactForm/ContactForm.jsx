@@ -21,9 +21,10 @@ class ContactForm extends Component {
   };
 
   handleSubmit = e => {
+    e.preventDefault();
+
     const { onSubmit, checkDuplicates } = this.props;
     const { name } = this.state;
-    e.preventDefault();
 
     if (checkDuplicates(name)) {
       return;
@@ -40,8 +41,14 @@ class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <Box>
-        <Box display="flex" flexDirection="column" alignItems="center">
+      <Box
+        onSubmit={this.handleSubmit}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        as="form"
+      >
+        <label>
           <Title>Name</Title>
           <Input
             type="text"
@@ -52,8 +59,8 @@ class ContactForm extends Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </Box>
-        <Box display="flex" flexDirection="column" alignItems="center">
+        </label>
+        <label>
           <Title>Number</Title>
           <Input
             type="tel"
@@ -64,7 +71,7 @@ class ContactForm extends Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-        </Box>
+        </label>
 
         <Button type="submit">Add contact</Button>
       </Box>

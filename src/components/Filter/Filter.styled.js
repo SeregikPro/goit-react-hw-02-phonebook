@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Title = styled.p`
   font-size: ${p => p.theme.fontSizes.m};
+  margin-top: ${p => p.theme.space[0]}px;
   margin-bottom: ${p => p.theme.space[0]}px;
 `;
 

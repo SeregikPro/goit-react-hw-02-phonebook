@@ -10,7 +10,7 @@ export const StyledButton = styled.button`
       : p.theme.fontWeights.normal;
   }};
   color: ${p => p.theme.colors.black};
-  margin: ${p => p.theme.space[3]}px;
+  margin: ${p => p.theme.space[2]}px;
   padding-top: ${p => {
     return p.type === 'submit' ? '8px' : '0px';
   }};

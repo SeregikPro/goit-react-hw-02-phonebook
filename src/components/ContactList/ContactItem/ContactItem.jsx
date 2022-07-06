@@ -5,9 +5,11 @@ import { Name, Number } from './ContactItem.styled';
 
 const ContactItem = ({ id, name, number, deleteContact }) => {
   return (
-    <Box display="flex" alignItems="center" mb={3}>
-      <Name>{name}:</Name>
-      <Number>{number}</Number>
+    <Box display="flex" justifyContent="space-between" alignItems="center">
+      <div>
+        <Name>{name}:</Name>
+        <Number>{number}</Number>
+      </div>
       <Button type="button" handleFunc={() => deleteContact(id)}>
         Delete
       </Button>
