@@ -23,6 +23,6 @@ const ContactList = ({ values, handleDelete }) => {
 export default ContactList;
 
 ContactList.propTypes = {
-  values: PropTypes.arrayOf(PropTypes.object().isRequired).isRequired,
+  values: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   handleDelete: PropTypes.func.isRequired,
 };
